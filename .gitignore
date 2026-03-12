@@ -1,0 +1,19 @@
+# Compiler Output and Binary Files
+*.o
+*.d
+*.axf
+*.elf
+*.out
+*.bin
+*.hex
+
+# Code Composer Studio (CCS) Build Folders
+Debug/
+Release/
+
+# OS Generated Files
+Thumbs.db
+.DS_Store
+
+# (Optional) Log files
+*.log

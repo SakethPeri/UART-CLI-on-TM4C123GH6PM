@@ -2,29 +2,42 @@
 #include "clock.h"
 #include "gpio.h"
 
+#define MAX_CHAR 100
+
+
 void initHw(){
     initSystemClockTo40Mhz();
-    SYSCTL_RCGCUART_R |= SYSCTL_RCGC1_UART0; //enable the UART Module 0
-    SYSCTL_RCGCGPIO_R |= 0x01; //Enable port A which consists the said pins of the UART module
-    GPIO_PORTA_DEN_R |= 0x03;
-    GPIO_PORTA_AFSEL_R |= 0x03; //enabled the AFSEL Function in Port A
-    GPIO_PORTA_PCTL_R |= GPIO_PCTL_PA0_U0RX;
-    GPIO_PORTA_PCTL_R |= GPIO_PCTL_PA1_U0TX;
-    UART0_CTL_R |= 0x00000000;
-    UART0_IBRD_R |= 0x104;
-    UART0_FBRD_R |= 0x1B;
-    UART0_LCRH_R |= 0x00000060;
-    UART0_CTL_R |= 0x00000001;
+    SYSCTL_RCGCUART_R |= 0x01;
+    SYSCTL_RCGCGPIO_R |= 0x01;
+    waitMicrosecond(1);
+
+    GPIO_PORTA_DEN_R   |= 0x03;
+    GPIO_PORTA_AFSEL_R |= 0x03;
+    GPIO_PORTA_PCTL_R  |= 0x11; // PA0=U0RX, PA1=U0TX
+
+    UART0_CTL_R  = 0;
+    UART0_IBRD_R = 21;         // Set to 21 for 115200
+    UART0_FBRD_R = 45;         // Set to 45 for 115200
+    UART0_LCRH_R = 0x60;       // 8-bit, no parity (FIFO off for now to test)
+    UART0_CTL_R  = 0x301;
 }
 
-void uartprint(){
+void putsuart(char *ptr){
+    if(sizeof(array) > MAX_CHAR){
+        return; // Exit function if string is too long
+    }
 
-    UART0_DR_R = 'C';
-
+    while(*ptr != '\0'){
+        while(UART0_FR_R & 0x20); // Wait while TX FIFO is full
+        UART0_DR_R = *ptr;        // Send character
+        ptr++;                    // Move to next char
+    }
 }
 
 int main(void)
 {
-initHw();
-
+    initHw();
+    //putsuart(array);
+    //This will be the syntax for putsuart().
+    while(1);
 }
