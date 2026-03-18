@@ -14,6 +14,7 @@ ORDERED_OBJS += \
 "./gpio.obj" \
 "./main.obj" \
 "./nvic.obj" \
+"./printstr.obj" \
 "./tm4c123gh6pm_startup_ccs.obj" \
 "./wait.obj" \
 "../tm4c123gh6pm.cmd" \
@@ -146,8 +147,8 @@ Basics\ of\ UART.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "clock.obj" "gpio.obj" "main.obj" "nvic.obj" "tm4c123gh6pm_startup_ccs.obj" "wait.obj" 
-	-$(RM) "clock.d" "gpio.d" "main.d" "nvic.d" "tm4c123gh6pm_startup_ccs.d" "wait.d" 
+	-$(RM) "clock.obj" "gpio.obj" "main.obj" "nvic.obj" "printstr.obj" "tm4c123gh6pm_startup_ccs.obj" "wait.obj" 
+	-$(RM) "clock.d" "gpio.d" "main.d" "nvic.d" "printstr.d" "tm4c123gh6pm_startup_ccs.d" "wait.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

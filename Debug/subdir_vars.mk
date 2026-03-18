@@ -13,6 +13,7 @@ C_SRCS += \
 ../gpio.c \
 ../main.c \
 ../nvic.c \
+../printstr.c \
 ../tm4c123gh6pm_startup_ccs.c \
 ../wait.c 
 
@@ -21,6 +22,7 @@ C_DEPS += \
 ./gpio.d \
 ./main.d \
 ./nvic.d \
+./printstr.d \
 ./tm4c123gh6pm_startup_ccs.d \
 ./wait.d 
 
@@ -29,6 +31,7 @@ OBJS += \
 ./gpio.obj \
 ./main.obj \
 ./nvic.obj \
+./printstr.obj \
 ./tm4c123gh6pm_startup_ccs.obj \
 ./wait.obj 
 
@@ -37,6 +40,7 @@ OBJS__QUOTED += \
 "gpio.obj" \
 "main.obj" \
 "nvic.obj" \
+"printstr.obj" \
 "tm4c123gh6pm_startup_ccs.obj" \
 "wait.obj" 
 
@@ -45,6 +49,7 @@ C_DEPS__QUOTED += \
 "gpio.d" \
 "main.d" \
 "nvic.d" \
+"printstr.d" \
 "tm4c123gh6pm_startup_ccs.d" \
 "wait.d" 
 
@@ -53,6 +58,7 @@ C_SRCS__QUOTED += \
 "../gpio.c" \
 "../main.c" \
 "../nvic.c" \
+"../printstr.c" \
 "../tm4c123gh6pm_startup_ccs.c" \
 "../wait.c" 
 
