@@ -1,7 +1,7 @@
 #include "tm4c123gh6pm.h"
 #include "clock.h"
 #include "gpio.h"
-#include "wait.h"     // Make sure wait.h exists and has waitMicrosecond!
+#include "wait.h"     
 #include "printstr.h"
 
 void initHw() {
